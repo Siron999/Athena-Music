@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Yantramanav', sans-serif;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+    background: #f1f1f1;
+}
+
+.custom-media{
+    width: 93.5vw !important;
+    margin-left: -30px;
+    border-radius:0;
+    background: #f6f1ff !important;
+}

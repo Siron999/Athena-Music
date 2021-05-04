@@ -1,23 +1,45 @@
-const { app, BrowserWindow } = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
+const ipc = ipcMain;
 const path = require('path')
 
-function createWindow () {
+function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
+        frame: false,
+        minWidth:300,
+        minHeight:300,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
-            nodeIntegration:false,
-            worldSafeExecuteJavaScript:true,
-            contextIsolation:true
+            nodeIntegration: true,
+            worldSafeExecuteJavaScript: true,
+            contextIsolation: false
         }
     })
 
     win.loadFile('index.html')
+
+    //close
+    ipc.on('closeApp', () => {
+        win.close();
+    })
+    //restore
+    ipc.on('restoreApp', () => {
+        if (win.isMaximized()) {
+            win.restore();
+        } else {
+            win.maximize();
+        }
+    })
+
+    //minimize
+    ipc.on('minApp', () => {
+        win.minimize();
+    })
 }
 
-require('electron-reload')(__dirname,{
-    electron: path.join(__dirname,'node_modules','.bin','electron')
+require('electron-reload')(__dirname, {
+    electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
 })
 
 app.whenReady().then(() => {

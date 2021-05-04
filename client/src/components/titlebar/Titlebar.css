@@ -1,0 +1,74 @@
+.link-color-white {
+    color: white;
+    cursor: default;
+}
+
+.link-color-white:hover {
+    color: #ffffff;
+}
+
+
+.navbar-custom{
+    position: fixed !important;
+    width: 100%;
+    z-index: 999;
+    top:0;
+    background: #111111;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    -webkit-app-region: drag;
+}
+
+.title-container {
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    align-items: center;
+    text-align: center;
+}
+
+
+.button-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.title-button-div {
+    height: 29px;
+    width: 35px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -webkit-app-region: no-drag;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+
+.btnMin{
+    padding-bottom:5px ;
+
+}
+.btnMin:hover {
+    background: #3e3d3d;
+}
+
+.btnEx{
+    padding-top:2px ;
+}
+.btnEx:hover {
+    background: #3e3d3d;
+}
+
+.btnClose{
+    padding-top:2px ;
+}
+.btnClose:hover {
+    background: #db3232;
+}
+
