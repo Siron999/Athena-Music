@@ -19,11 +19,19 @@ export const addSong = async (req, res) => {
 
 export const getAudio = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
+    const range=req.headers.range;
     await Song.findById(id, (err, result) => {
         const data = result.file;
+        const fileSize = Buffer.byteLength(data)
+        const CHUNK_SIZE = 10 ** 6;
+        console.log(CHUNK_SIZE)// 1MB
+        const start = Number(range.replace(/\D/g, ""));
+        const end = Math.min(start + CHUNK_SIZE, fileSize - 1);
         const head = {
-            'Content-Type': 'audio/mpeg',
+            "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+            "Accept-Ranges": "bytes",
+            'Content-Length': fileSize,
+            'Content-Type': 'audio/mp3',
         };
         res.writeHead(200, head);
         const file= Readable.from(data);

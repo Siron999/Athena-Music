@@ -40,8 +40,7 @@ export const HomePage = () => {
                     {(allSongs !== []) ?
                         allSongs.map((song, i) =>
                             <div key={i} className="my-1" onClick={() => {
-                                handleSong(song._id);
-                                updateSong()
+                                handleSong(song._id)
                             }} style={{cursor: "pointer"}}>
                                  <h5>{i + 1}. {song.name}</h5>
                             </div>)
