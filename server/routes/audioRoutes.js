@@ -6,6 +6,7 @@ import {getAll} from "../controllers/audioController.js";
 const router=express.Router();
 
 router.get('/song/:id',getAudio);
+router.get('/getOne',getAudio);
 router.get('/all',getAll);
 router.post('/add',addSong);
 

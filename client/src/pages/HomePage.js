@@ -14,24 +14,15 @@ export const HomePage = () => {
     useEffect(() => {
         axios.get(`${URL}/all`).then((result) => {
             const {data} = result;
-            console.log(data)
             setAllSongs(data);
         });
 
     }, []);
 
     const handleSong = (id) => {
-        console.log(id);
         setCurrentSog(id);
     }
 
-    // const updateSong = () => {
-    //     if (audioRef.current) {
-    //         audioRef.current.pause();
-    //         audioRef.current.load();
-    //         audioRef.current.play();
-    //     }
-    // }
     return (
         <Container className="d-flex flex-column justify-content-between mx-2 mt-2" style={{height: "95vh"}}>
             <div>
@@ -42,18 +33,25 @@ export const HomePage = () => {
                             <div key={i} className="my-1" onClick={() => {
                                 handleSong(song._id)
                             }} style={{cursor: "pointer"}}>
-                                 <h5>{i + 1}. {song.name}</h5>
+                                <h5>{i + 1}. {song.name}</h5>
                             </div>)
                         : null
                     }
                 </div>
             </div>
             <div>
-                <AudioPlayer
-                    autoPlay
-                    src={`${URL}/song/${currentSong}`}
-                    className="custom-media"
-                />
+                {(currentSong !== '') ?
+                    <AudioPlayer
+                        autoPlay
+                        src={`${URL}/song/${currentSong}`}
+                        className="custom-media"
+                    /> : <AudioPlayer
+                        autoPlay
+                        src=''
+                        className="custom-media"
+                    />
+                }
+
             </div>
         </Container>
     )

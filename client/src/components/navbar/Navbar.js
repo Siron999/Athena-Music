@@ -21,7 +21,7 @@ export const NavbarComponent = () => {
                              to={"/add"}>
                         <div className={"d-flex flex-column align-items-center"}>
                             <i className="fas fa-search"></i>
-                            <p>Search</p>
+                            <p>Add</p>
                         </div>
                     </NavLink>
                 </NavItem>

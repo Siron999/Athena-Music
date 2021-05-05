@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const postSchema = mongoose.Schema({
     name: String,
     cover: String,
-    details: String,
+    fileName: String,
     file: {
         type: Buffer
     },
